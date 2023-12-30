@@ -34,6 +34,10 @@ resource "minio_iam_user" "terraform_sa_user" {
   secret = var.minio_terraform_sa_secret
 }
 
+resource "minio_iam_service_account" "terraform_sa" {
+  target_user = minio_iam_user.terraform_sa_user.name
+}
+
 resource "minio_iam_user_policy_attachment" "terraform_sa_user_policy" {
   user_name   = minio_iam_user.terraform_sa_user.id
   policy_name = minio_iam_policy.rw_policy.id
