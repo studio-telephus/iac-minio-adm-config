@@ -12,7 +12,7 @@ module "tfstate_adm_bucket" {
 
 data "minio_iam_policy_document" "rw_policy" {
   statement {
-    sid = "AllowOwnerToAll"
+    sid    = "AllowOwnerToAll"
     effect = "Allow"
     actions = [
       "s3:*"
@@ -34,11 +34,23 @@ resource "minio_iam_user" "terraform_sa_user" {
   secret = var.minio_terraform_sa_secret
 }
 
+resource "minio_iam_user_policy_attachment" "terraform_sa_user_policy" {
+  user_name   = minio_iam_user.terraform_sa_user.id
+  policy_name = minio_iam_policy.rw_policy.id
+}
+
 resource "minio_iam_service_account" "terraform_sa" {
   target_user = minio_iam_user.terraform_sa_user.name
 }
 
-resource "minio_iam_user_policy_attachment" "terraform_sa_user_policy" {
-  user_name   = minio_iam_user.terraform_sa_user.id
-  policy_name = minio_iam_policy.rw_policy.id
+resource "local_file" "terraform_sa_access_key" {
+  content    = minio_iam_service_account.terraform_sa.access_key
+  filename   = var.path_terraform_sa_access_key
+  depends_on = [minio_iam_service_account.terraform_sa]
+}
+
+resource "local_file" "terraform_sa_secret_key" {
+  content    = minio_iam_service_account.terraform_sa.secret_key
+  filename   = var.path_terraform_sa_secret_key
+  depends_on = [minio_iam_service_account.terraform_sa]
 }
