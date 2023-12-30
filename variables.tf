@@ -25,7 +25,7 @@ variable "minio_terraform_sa_username" {
   sensitive = true
 }
 
-variable "minio_terraform_sa_secret" {
+variable "minio_terraform_sa_password" {
   type      = string
   sensitive = true
 }
