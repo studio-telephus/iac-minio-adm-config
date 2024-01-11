@@ -39,3 +39,8 @@ variable "path_terraform_sa_secret_key" {
   type    = string
   default = "terraform_sa_secret_key.out"
 }
+
+variable "state_bucket_prefix" {
+  type    = string
+  default = "bucket-"
+}

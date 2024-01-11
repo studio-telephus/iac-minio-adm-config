@@ -1,5 +1,5 @@
 locals {
-  bucket_platform_state_adm = "platform-state-adm"
+  bucket_platform_state_adm = "${var.state_bucket_prefix}platform-state-adm"
 }
 
 module "bucket_platform_state_adm" {

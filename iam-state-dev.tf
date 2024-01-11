@@ -1,5 +1,5 @@
 locals {
-  bucket_iam_state_dev = "iam-state-dev"
+  bucket_iam_state_dev = "${var.state_bucket_prefix}iam-state-dev"
 }
 
 module "bucket_iam_state_dev" {
