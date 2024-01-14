@@ -5,5 +5,9 @@ terraform {
       source  = "aminueza/minio"
       version = "~> 2.0"
     }
+    bitwarden = {
+      source  = "maxlaverse/bitwarden"
+      version = "~> 0.6"
+    }
   }
 }
