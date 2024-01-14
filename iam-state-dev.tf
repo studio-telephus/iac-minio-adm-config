@@ -30,6 +30,6 @@ resource "minio_iam_policy" "bucket_iam_state_dev" {
 }
 
 resource "minio_iam_user_policy_attachment" "bucket_iam_state_dev" {
-  user_name   = minio_iam_user.terraform_sa_user.id
+  user_name   = minio_iam_user.minio_user_iam.id
   policy_name = minio_iam_policy.bucket_iam_state_dev.id
 }
