@@ -19,9 +19,9 @@ jobs:
           RemotePath: "~/components/minio/adm/config"
           BackendConfig: >
             {
-              "endpoint": "${{ vars.CI_S3_MINIO_ADM_ENDPOINT }}",
-              "access_key": "${{ secrets.CI_MINIO_ADM_SA_ACCESS_KEY }}",
-              "secret_key": "${{ secrets.CI_MINIO_ADM_SA_SECRET_KEY }}",
+              "endpoint": "${{ vars.MINIO_ADM_S3_ENDPOINT }}",
+              "access_key": "${{ secrets.MINIO_ADM_SA_ACCESS_KEY }}",
+              "secret_key": "${{ secrets.MINIO_ADM_SA_SECRET_KEY }}",
               "bucket": "bucket-platform-state-adm",
               "key": "minio/config/tfstate.json",
               "region": "main",
