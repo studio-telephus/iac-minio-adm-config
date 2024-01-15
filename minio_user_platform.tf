@@ -11,11 +11,11 @@ resource "minio_iam_service_account" "minio_user_platform" {
 }
 
 resource "local_sensitive_file" "minio_user_platform_access_key" {
-  content = minio_iam_service_account.minio_user_platform.access_key
-  filename          = ".terraform/minio_user_platform_access_key.out"
+  content  = minio_iam_service_account.minio_user_platform.access_key
+  filename = ".terraform/minio_user_platform_access_key.out"
 }
 
 resource "local_sensitive_file" "minio_user_platform_secret_key" {
-  content = minio_iam_service_account.minio_user_platform.secret_key
-  filename          = ".terraform/minio_user_platform_secret_key.out"
+  content  = minio_iam_service_account.minio_user_platform.secret_key
+  filename = ".terraform/minio_user_platform_secret_key.out"
 }
