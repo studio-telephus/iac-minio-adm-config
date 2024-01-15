@@ -12,7 +12,3 @@ variable "state_bucket_prefix" {
   type    = string
   default = "bucket-"
 }
-
-variable "tags" {
-  type = map(string)
-}
