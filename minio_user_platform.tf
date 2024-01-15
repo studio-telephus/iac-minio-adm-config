@@ -1,10 +1,15 @@
 resource "minio_iam_user" "minio_user_platform" {
   name   = module.minio_user_platform.data.username
   secret = module.minio_user_platform.data.password
+  tags   = var.tags
 }
 
 resource "minio_iam_service_account" "minio_user_platform" {
   target_user = minio_iam_user.minio_user_platform.name
+  tags        = var.tags
+  lifecycle {
+    ignore_changes = [policy]
+  }
 }
 
 resource "local_file" "minio_user_platform_access_key" {
