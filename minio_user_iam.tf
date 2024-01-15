@@ -1,12 +1,10 @@
 resource "minio_iam_user" "minio_user_iam" {
   name   = module.minio_user_iam.data.username
   secret = module.minio_user_iam.data.password
-  tags   = var.tags
 }
 
 resource "minio_iam_service_account" "minio_user_iam" {
   target_user = minio_iam_user.minio_user_iam.name
-  tags        = var.tags
 }
 
 resource "local_file" "minio_user_iam_access_key" {
