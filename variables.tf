@@ -1,6 +1,6 @@
 variable "minio_server" {
   type    = string
-  default = "minio.adm.acme.corp:9000"
+  default = "minio.docker.adm.acme.corp:9000"
 }
 
 variable "minio_ssl" {
